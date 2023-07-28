@@ -5,3 +5,5 @@ Email: ema@gmail.com Password: ema2023
 Email: sam@gmail.com Password: sam2023
 # User 3: 
 Email: jack@gmail.com Password: jack2023
+
+Registration functionality is under development. 
