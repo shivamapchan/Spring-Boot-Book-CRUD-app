@@ -5,33 +5,36 @@
 
 <body>
 	<div class="container-fluid">
-		<div th:replace="navigation :: menu"></div>	
+		<div th:replace="navigation :: menu"></div>
 	</div>
 
-	<div class="container-fluid text-center">
-			<h3>[[${pageTitle}]]</h3>
+	<div class="container-fluid col-md-6 offset-md-3"
+		th:each="user: ${userObject}">
+		<h4 class="pt-4 text-center">[[${pageTitle}]]</h4>
 
-			<table class="table table-bordered mt-2">
-				<thead class="thead-light">
-					<tr>
-						<th>Id</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Email</th>
-						<th>Age</th>
-					</tr>
-				</thead>
-				<tbody>
-					<th:block th:each="user: ${userObject}">
-						<tr>
-							<td>[[${user.id}]]</td>
-							<td>[[${user.firstName}]]</td>
-							<td>[[${user.lastName}]]</td>
-							<td>[[${user.email}]]</td>
-							<td>[[${user.age}]]</td>							
-						</tr>
-				</tbody>
-			</table>
+		<div class="border border-secondary rounded p-5">
+			<div class="form-group row">
+			<label class="col-sm-3 col-form-label"><b>User ID: </b></label>
+			<div class="mt-2">[[${user.id}]]</div>
 		</div>
-	</body>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label"><b>First Name: </b></label>
+			<div class="mt-2">[[${user.firstName}]]</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label"><b>Last Name: </b></label>
+			<div class="mt-2">[[${user.lastName}]]</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label"><b>Email: </b></label>
+			<div class="mt-2">[[${user.email}]]</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-3 col-form-label"><b>age: </b></label>
+			<div class="mt-2">[[${user.age}]]</div>
+		</div>
+		</div>
+
+	</div>
+</body>
 </html>

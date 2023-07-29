@@ -4,14 +4,19 @@
 <head th:replace="fragments :: page_head('add-user-form')"></head>
 
 <body>
-	<div class="container-fluid">
-		<div th:replace="navigation :: menu"></div>
-		
+	<div class="text-center m-4" ><h1>Welcome To Book Application</h1></div>
+
+	<div class="container-fluid">		
 		<div class="container-fluid mt-4">
 		<div class="text-center"><h3>[[${pageTitle}]]</h3></div>
 		
 		<form th:action="@{/user/add}" th:object="${user}" th:method="post" style="max-width: 650px; margin: 0 auto;">
 			<input type="hidden" th:field="*{id}">
+			<div th:if="${param.success}">
+	          <div class="alert alert-info">
+	            You have successfully registered the book app!
+	          </div>
+	      	</div>
 			<div class="border border-secondary rounded p-4">
 				<div class="form-group row">
 					<label class="col-sm-4 col-form-label">First Name</label>
@@ -44,8 +49,8 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<button type="submit"  class="btn btn-primary m-2">Save</button>
-					<button type="button"  class="btn btn-secondary" onClick="cancelForm()">Cancel</button>
+					<button type="submit"  class="btn btn-primary m-2">Submit</button>
+					<p>Already have an account? <a href="/" th:href="@{/login}">Login</a> <p>
 				</div>
 			</div>
 		</form>
