@@ -34,19 +34,6 @@ public class UserService {
 		user.setPassword(encodedPassword);
 	}
 	
-	public List<User> findAllUsers(){
-		List<User> userList = userRepository.findAll();
-		return userList;
-	}
-	
-	public void delete(Integer id) throws UserNotFoundException {
-		Long countById = userRepository.countById(id);
-		if(countById == null || countById == 0) {
-			throw new UserNotFoundException("Could not found any User with ID "+id);
-		} 
-		userRepository.deleteById(id);
-	}
-	
 	public User getById(Integer id) throws UserNotFoundException {
 		try {
 			return userRepository.findById(id).get();

@@ -24,36 +24,36 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 	
+
+//	
 //	@Bean
 //	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//		http.authorizeHttpRequests().anyRequest().permitAll();
-//		return http.build();
-//	}
-	
-//	@Bean
-//	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//		http.authorizeHttpRequests()
-//			.anyRequest().authenticated()
-//			.and()
-//			.formLogin()
-//				.loginPage("/login")
-//				.usernameParameter("email")
-//				.permitAll()
-//			.and().logout().permitAll();
+//        http.authorizeHttpRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin(login -> login
+//                        .loginPage("/login")
+//                        .usernameParameter("email")
+//                        .permitAll()).logout(logout -> logout.permitAll());
 //		return http.build();
 //	}
 	
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
+                .antMatchers("/user", "/user/add").permitAll()
                 .anyRequest().authenticated()
-                .and()
-                .formLogin(login -> login
-                        .loginPage("/login")
-                        .usernameParameter("email")
-                        .permitAll()).logout(logout -> logout.permitAll());
-		return http.build();
-	}
+                .and().formLogin(login -> login
+                .loginPage("/login")
+                .usernameParameter("email")
+                .permitAll())
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/login?logout")
+                        .permitAll());
+                
+        //http.headers(headers -> headers.frameOptions().sameOrigin());
+        return http.build();
+    }
 	
 	
 	
