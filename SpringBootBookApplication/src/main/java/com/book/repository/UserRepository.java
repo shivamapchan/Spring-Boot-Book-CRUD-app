@@ -12,7 +12,5 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	@Query("SELECT u FROM User u WHERE u.email= :email")
 	public User getUserByEmail(@Param("email") String email);
 	
-	// needed for delete functionality
-	public Long countById(Integer id);
 
 }
