@@ -4,3 +4,21 @@
 *.icon-gray{color:gray}
 *.icon-black{color:black}
 *.icon-yellow{color:yellow}
+
+
+@media screen and (max-width:768px){
+	/* small screen */
+	div.mediumscreen-details { display: none; }
+	div.smallscreen-details { display: block; }	
+}
+
+@media screen and (min-width:768px) and (max-width: 1024px){
+	/* medium screen */
+	div.mediumscreen-details { display: block; }
+	div.smallscreen-details { display: none; }
+}
+
+@media screen and (min-width: 1024px){
+	/* large screen */
+	div.smallscreen-details { display: none; }	
+}
